@@ -11,10 +11,10 @@ consonants = 'bcdfghjklmnpqrstvwxyz'
 letters = vowels + consonants
 letters_dict = {"V" : vowels, "C" : consonants, "L" : letters}
 
-def get_pref(word_length):
+def get_pref(name_length):
     choice=[]
     print("Enter 'V' for vowel, 'C' for consonant, 'L' for any letter or any single lowercase letter:")
-    for word_pos in range(word_length):
+    for word_pos in range(name_length):
         c = input("At position " + str(word_pos+1) + ":")
         choice.append(c)    
     return choice
@@ -28,9 +28,10 @@ def name_generator(preferences):
             name += preference
     return name
 
-number_of_words = int(input("Enter number of baby names to be printed:"))
-word_length = int(input("Enter length of required baby name:"))
-preferences = get_pref(word_length)
-
-for item in range(number_of_words):
-    print(name_generator(preferences))
+if __name__ == "__main__":
+    number_of_names = int(input("Enter number of baby names to be printed:"))
+    name_length = int(input("Enter length of required baby name:"))
+    preferences = get_pref(name_length)
+    
+    for item in range(number_of_names):
+        print(name_generator(preferences))
