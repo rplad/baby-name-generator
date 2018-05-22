@@ -9,6 +9,7 @@ import random
 vowels = 'aeiou'
 consonants = 'bcdfghjklmnpqrstvwxyz'
 letters = vowels + consonants
+letters_dict = {"V" : vowels, "C" : consonants, "L" : letters}
 
 def get_pref(word_length):
     choice=[]
@@ -19,17 +20,12 @@ def get_pref(word_length):
     return choice
 
 def name_generator(preferences):
-    word_length = len(preferences)
     name = ''
-    for position in range(word_length):
-        if preferences[position] == 'V':
-            name += random.choice(vowels)
-        elif preferences[position] == 'C':
-            name += random.choice(consonants)
-        elif preferences[position] == 'L':
-            name += random.choice(letters)
+    for preference in preferences:
+        if preference in letters_dict:
+            name += random.choice(letters_dict[preference])
         else:
-            name += preferences[position]
+            name += preference
     return name
 
 number_of_words = int(input("Enter number of baby names to be printed:"))
